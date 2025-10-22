@@ -1,98 +1,215 @@
-
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Experience Dating — Onde as experiências se tornam encontros</title>
-    <style>
-      body {
-        background-color: #fffaf3;
-        color: #4b3b1f;
-        font-family: "Poppins", sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience Dating 💫</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #fffaf0, #fff1cc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #5b4300;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #b8860b;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .button {
+      background: linear-gradient(to right, #d4af37, #b8860b);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(184, 134, 11, 0.6);
+    }
+
+    /* Pop-up vidro fosco */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid #d4af37;
+      border-radius: 20px;
+      padding: 30px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .popup h2 {
+      color: #b8860b;
+      margin-bottom: 15px;
+    }
+
+    .popup input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #d4af37;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .popup button {
+      background: linear-gradient(to right, #d4af37, #b8860b);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .popup button:hover {
+      transform: scale(1.05);
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: #b8860b;
+      cursor: pointer;
+    }
+
+    .message {
+      color: #b8860b;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .toggle {
+      color: #b8860b;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>💫 Experience Dating 💫</h1>
+  <button class="button" id="openPopup">Entrar na experiência</button>
+
+  <div class="overlay" id="popupOverlay">
+    <div class="popup">
+      <span class="close" id="closePopup">&times;</span>
+      <h2>Experience Dating</h2>
+
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="E-mail" required /><br />
+        <input type="password" id="password" placeholder="Palavra-passe" required /><br />
+        <div id="confirmContainer" style="display: none;">
+          <input type="password" id="confirmPassword" placeholder="Confirmar palavra-passe" /><br />
+        </div>
+        <button type="submit" id="submitBtn">Entrar</button>
+      </form>
+
+      <p id="toggleText">Ainda não tem conta? <span class="toggle" id="toggleForm">Criar conta</span></p>
+      <div class="message" id="message"></div>
+    </div>
+  </div>
+
+  <script>
+    const openPopup = document.getElementById('openPopup');
+    const closePopup = document.getElementById('closePopup');
+    const overlay = document.getElementById('popupOverlay');
+    const toggleForm = document.getElementById('toggleForm');
+    const toggleText = document.getElementById('toggleText');
+    const confirmContainer = document.getElementById('confirmContainer');
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('loginForm');
+    const message = document.getElementById('message');
+
+    let isRegister = false;
+
+    openPopup.addEventListener('click', () => {
+      overlay.style.display = 'flex';
+    });
+
+    closePopup.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      message.textContent = '';
+      form.reset();
+    });
+
+    toggleForm.addEventListener('click', () => {
+      isRegister = !isRegister;
+      if (isRegister) {
+        confirmContainer.style.display = 'block';
+        submitBtn.textContent = 'Criar conta';
+        toggleText.innerHTML = 'Já tem conta? <span class="toggle" id="toggleForm">Entrar</span>';
+      } else {
+        confirmContainer.style.display = 'none';
+        submitBtn.textContent = 'Entrar';
+        toggleText.innerHTML = 'Ainda não tem conta? <span class="toggle" id="toggleForm">Criar conta</span>';
+      }
+      message.textContent = '';
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+
+      if (isRegister && password !== confirm) {
+        message.textContent = '⚠️ As palavras-passe não coincidem!';
+        return;
       }
 
-      header {
-        background-color: #ffffff;
-        border-bottom: 2px solid #f1e2b8;
-        padding: 20px 0;
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
-      }
+      message.textContent = isRegister
+        ? '✨ Conta criada com sucesso!'
+        : '✨ Login efetuado com sucesso!';
 
-      header h1 {
-        color: #d4af37;
-        font-size: 2.2em;
-        margin: 0;
-      }
-
-      main {
-        padding: 80px 20px;
-      }
-
-      main h2 {
-        color: #d4af37;
-        font-size: 1.8em;
-        margin-bottom: 10px;
-      }
-
-      main p {
-        font-size: 1.1em;
-        color: #5a4931;
-      }
-
-      button {
-        background-color: #d4af37;
-        border: none;
-        color: white;
-        padding: 15px 35px;
-        font-size: 1.1em;
-        border-radius: 50px;
-        cursor: pointer;
-        margin-top: 40px;
-        transition: 0.3s;
-      }
-
-      button:hover {
-        background-color: #b8962f;
-        transform: scale(1.05);
-      }
-
-      footer {
-        background-color: #fff9ec;
-        padding: 15px 0;
-        color: #9b8a60;
-        font-size: 0.9em;
-        border-top: 1px solid #f3e3b2;
-        margin-top: 80px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <h1>💫 Experience Dating 💫</h1>
-    </header>
-
-    <main>
-      <h2>Onde as experiências se tornam encontros</h2>
-      <p>Conecta-te com pessoas reais através de experiências únicas.</p>
-      <button onclick="mostrarMensagem()">Entrar na experiência</button>
-      <p id="mensagem" style="margin-top:30px; font-weight:500;"></p>
-    </main>
-
-    <footer>
-      © 2025 Experience Dating — Todos os direitos reservados
-    </footer>
-
-    <script>
-      function mostrarMensagem() {
-        const msg = document.getElementById("mensagem");
-        msg.textContent = "✨ Em breve! As melhores experiências estão a caminho.";
-        msg.style.color = "#d4af37";
-      }
-    </script>
-  </body>
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        message.textContent = '';
+        form.reset();
+      }, 2000);
+    });
+  </script>
+</body>
 </html>
