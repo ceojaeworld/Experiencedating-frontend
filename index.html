@@ -9,13 +9,54 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      height: 100vh;
       background: linear-gradient(to bottom right, #fffaf0, #fff1cc);
+      color: #5b4300;
+      overflow-x: hidden;
+    }
+
+    /* 🔝 Menu superior fixo */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      border-bottom: 2px solid #d4af37;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #b8860b;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5b4300;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #b8860b;
+    }
+
+    /* 🔹 Corpo principal */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      color: #5b4300;
+      text-align: center;
+      padding-top: 80px;
     }
 
     h1 {
@@ -42,7 +83,7 @@
       box-shadow: 0 6px 18px rgba(184, 134, 11, 0.6);
     }
 
-    /* Pop-up vidro fosco */
+    /* 🪩 Pop-up vidro fosco */
     .overlay {
       position: fixed;
       top: 0;
@@ -54,7 +95,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      z-index: 2000;
     }
 
     .popup {
@@ -126,14 +167,28 @@
       font-weight: bold;
       text-decoration: underline;
     }
-
   </style>
 </head>
 <body>
 
-  <h1>💫 Experience Dating 💫</h1>
-  <button class="button" id="openPopup">Entrar na experiência</button>
+  <!-- 🔝 Menu Superior -->
+  <div class="navbar">
+    <div class="logo">💫 Experience Dating</div>
+    <div class="nav-links">
+      <a href="#">Início</a>
+      <a href="#">Premium</a>
+      <a href="#">Contactos</a>
+      <a href="#" id="openPopupNav">Login</a>
+    </div>
+  </div>
 
+  <!-- 🌟 Secção principal -->
+  <div class="hero">
+    <h1>💖 Conhece. Vive. Sente. 💖</h1>
+    <button class="button" id="openPopup">Entrar na experiência</button>
+  </div>
+
+  <!-- 🪩 Pop-up vidro fosco -->
   <div class="overlay" id="popupOverlay">
     <div class="popup">
       <span class="close" id="closePopup">&times;</span>
@@ -155,6 +210,7 @@
 
   <script>
     const openPopup = document.getElementById('openPopup');
+    const openPopupNav = document.getElementById('openPopupNav');
     const closePopup = document.getElementById('closePopup');
     const overlay = document.getElementById('popupOverlay');
     const toggleForm = document.getElementById('toggleForm');
@@ -166,9 +222,12 @@
 
     let isRegister = false;
 
-    openPopup.addEventListener('click', () => {
+    function openLoginPopup() {
       overlay.style.display = 'flex';
-    });
+    }
+
+    openPopup.addEventListener('click', openLoginPopup);
+    openPopupNav.addEventListener('click', openLoginPopup);
 
     closePopup.addEventListener('click', () => {
       overlay.style.display = 'none';
