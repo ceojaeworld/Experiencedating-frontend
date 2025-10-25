@@ -198,6 +198,67 @@
         <input type="email" id="email" placeholder="E-mail" required /><br />
         <input type="password" id="password" placeholder="Palavra-passe" required /><br />
         <div id="confirmContainer" style="display: none;">
+/* 💎 Secção Premium */
+.premium {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1529634890130-4d4b7a1a4c8f?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  margin-top: 0;
+}
+
+.premium-overlay {
+  background: rgba(255, 215, 0, 0.15);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  display: inline-block;
+  padding: 50px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+}
+
+.premium h2 {
+  font-size: 2rem;
+  color: #fff9e6;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.premium ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.premium li {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.premium-button {
+  background: linear-gradient(to right, #d4af37, #b8860b);
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 16px rgba(184, 134, 11, 0.4);
+}
+
+.premium-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(184, 134, 11, 0.6);
+}
           <input type="password" id="confirmPassword" placeholder="Confirmar palavra-passe" /><br />
         </div>
         <button type="submit" id="submitBtn">Entrar</button>
