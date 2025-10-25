@@ -283,6 +283,15 @@
   </div>
 
   <script>
+const openPopup = document.getElementById('openPopup');
+const openPopupNav = document.getElementById('openPopupNav');
+const premiumButton = document.querySelector('.premium-button');
+const closePopup = document.getElementById('closePopup');
+const overlay = document.getElementById('popupOverlay');
+...
+openPopup.addEventListener('click', openLoginPopup);
+openPopupNav.addEventListener('click', openLoginPopup);
+premiumButton.addEventListener('click', openLoginPopup);
     const openPopup = document.getElementById('openPopup');
     const openPopupNav = document.getElementById('openPopupNav');
     const closePopup = document.getElementById('closePopup');
