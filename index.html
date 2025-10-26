@@ -1,368 +1,44 @@
+ 
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experience Dating 💫</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom right, #fffaf0, #fff1cc);
-      color: #5b4300;
-      overflow-x: hidden;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ExperienceDating — onde novas conexões e experiências ganham vida. Encontros reais, jantares exclusivos e momentos únicos."
+    />
+    <meta name="theme-color" content="#FFD700" />
 
-    /* 🔝 Menu superior fixo */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      border-bottom: 2px solid #d4af37;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 40px;
-      z-index: 1000;
-    }
+    <title>ExperienceDating 💛</title>
 
-    .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #b8860b;
-      letter-spacing: 1px;
-    }
+    <!-- Ícone do site -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
 
-    .nav-links a {
-      text-decoration: none;
-      color: #5b4300;
-      margin: 0 15px;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    .nav-links a:hover {
-      color: #b8860b;
-    }
-.premium-note {
-  font-size: 1rem;
-  color: #fff9e6;
-  margin-top: 20px;
-  font-style: italic;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-}
+    <!-- Fonte Premium -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    /* 🔹 Corpo principal */
-    .hero
-<!-- 💎 Secção Premium -->
-  <!-- 💎 Secção Premium -->
-  <section class="premium">
-    <div class="premium-overlay">
-      <h2>Conta Premium – Viva a experiência completa</h2>
-      <ul>
-        <li>🍽️ Participação automática no <b>sorteio mensal</b> para jantar pago pelo site</li>
-        <li>💃 Acesso a <b>eventos exclusivos</b> e experiências únicas</li>
-        <li>🌟 <b>Perfil em destaque</b> nas pesquisas</li>
-        <li>💌 <b>Prioridade nas correspondências</b> e recomendações</li>
-      </ul>
-      <button class="premium-button">💛 Tornar-me Premium – 20€/mês</button>
-      <p class="premium-note">
-        Os membros Premium têm acesso a experiências exclusivas, sorteios e jantares mensais.
-      </p>
-    </div>
-   </section> {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding-top: 80px;
-    }
+    <!-- SEO -->
+    <meta property="og:title" content="ExperienceDating" />
+    <meta
+      property="og:description"
+      content="Vive experiências reais com pessoas genuínas. Jantares, sorteios e memórias únicas — só no ExperienceDating."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <meta property="og:type" content="website" />
+  </head>
 
-    h1 {
-      font-size: 2.5rem;
-      color: #b8860b;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
+  <body>
+    <noscript>É necessário ativar o JavaScript para usar este site.</noscript>
+    <div id="root"></div>
 
-    .button {
-      background: linear-gradient(to right, #d4af37, #b8860b);
-      color: white;
-      border: none;
-      padding: 15px 40px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(184, 134, 11, 0.6);
-    }
-
-    /* 🪩 Pop-up vidro fosco */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(6px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-
-    .popup {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(10px);
-      border: 2px solid #d4af37;
-      border-radius: 20px;
-      padding: 30px;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 0.4s ease;
-    }
-
-    .popup h2 {
-      color: #b8860b;
-      margin-bottom: 15px;
-    }
-
-    .popup input {
-      width: 90%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #d4af37;
-      border-radius: 10px;
-      font-size: 1rem;
-      outline: none;
-    }
-
-    .popup button {
-      background: linear-gradient(to right, #d4af37, #b8860b);
-      color: white;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 20px;
-      cursor: pointer;
-      margin-top: 10px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .popup button:hover {
-      transform: scale(1.05);
-    }
-
-    .popup .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 1.5rem;
-      color: #b8860b;
-      cursor: pointer;
-    }
-
-    .message {
-      color: #b8860b;
-      margin-top: 10px;
-      font-weight: 500;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .toggle {
-      color: #b8860b;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 🔝 Menu Superior -->
-  <div class="navbar">
-    <div class="logo">💫 Experience Dating</div>
-    <div class="nav-links">
-      <a href="#">Início</a>
-      <a href="#">Premium</a>
-      <a href="#">Contactos</a>
-      <a href="#" id="openPopupNav">Login</a>
-    </div>
-  </div>
-
-  <!-- 🌟 Secção principal -->
-  <div class="hero">
-    <h1>💖 Conhece. Vive. Sente. 💖</h1>
-    <button class="button" id="openPopup">Entrar na experiência</button>
-  </div>
-
-  <!-- 🪩 Pop-up vidro fosco -->
-  <div class="overlay" id="popupOverlay">
-    <div class="popup">
-      <span class="close" id="closePopup">&times;</span>
-      <h2>Experience Dating</h2>
-
-      <form id="loginForm">
-        <input type="email" id="email" placeholder="E-mail" required /><br />
-        <input type="password" id="password" placeholder="Palavra-passe" required /><br />
-        <div id="confirmContainer" style="display: none;">
-/* 💎 Secção Premium */
-.premium {
-  position: relative;
-  background-image: url('https://images.unsplash.com/photo-1529634890130-4d4b7a1a4c8f?auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: center;
-  padding: 100px 20px;
-  margin-top: 0;
-}
-
-.premium-overlay {
-  background: rgba(255, 215, 0, 0.15);
-  backdrop-filter: blur(5px);
-  border-radius: 25px;
-  display: inline-block;
-  padding: 50px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  max-width: 800px;
-}
-
-.premium h2 {
-  font-size: 2rem;
-  color: #fff9e6;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
-}
-
-.premium ul {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-  display: inline-block;
-  margin-bottom: 30px;
-}
-
-.premium li {
-  font-size: 1.1rem;
-  margin: 10px 0;
-  line-height: 1.6;
-  color: #fff;
-}
-
-.premium-button {
-  background: linear-gradient(to right, #d4af37, #b8860b);
-  color: white;
-  border: none;
-  padding: 15px 35px;
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 16px rgba(184, 134, 11, 0.4);
-}
-
-.premium-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(184, 134, 11, 0.6);
-}
-          <input type="password" id="confirmPassword" placeholder="Confirmar palavra-passe" /><br />
-        </div>
-        <button type="submit" id="submitBtn">Entrar</button>
-      </form>
-
-      <p id="toggleText">Ainda não tem conta? <span class="toggle" id="toggleForm">Criar conta</span></p>
-      <div class="message" id="message"></div>
-    </div>
-  </div>
-
-  <script>
-const openPopup = document.getElementById('openPopup');
-const openPopupNav = document.getElementById('openPopupNav');
-const premiumButton = document.querySelector('.premium-button');
-const closePopup = document.getElementById('closePopup');
-const overlay = document.getElementById('popupOverlay');
-...
-openPopup.addEventListener('click', openLoginPopup);
-openPopupNav.addEventListener('click', openLoginPopup);
-premiumButton.addEventListener('click', openLoginPopup);
-    const openPopup = document.getElementById('openPopup');
-    const openPopupNav = document.getElementById('openPopupNav');
-    const closePopup = document.getElementById('closePopup');
-    const overlay = document.getElementById('popupOverlay');
-    const toggleForm = document.getElementById('toggleForm');
-    const toggleText = document.getElementById('toggleText');
-    const confirmContainer = document.getElementById('confirmContainer');
-    const submitBtn = document.getElementById('submitBtn');
-    const form = document.getElementById('loginForm');
-    const message = document.getElementById('message');
-
-    let isRegister = false;
-
-    function openLoginPopup() {
-      overlay.style.display = 'flex';
-    }
-
-    openPopup.addEventListener('click', openLoginPopup);
-    openPopupNav.addEventListener('click', openLoginPopup);
-
-    closePopup.addEventListener('click', () => {
-      overlay.style.display = 'none';
-      message.textContent = '';
-      form.reset();
-    });
-
-    toggleForm.addEventListener('click', () => {
-      isRegister = !isRegister;
-      if (isRegister) {
-        confirmContainer.style.display = 'block';
-        submitBtn.textContent = 'Criar conta';
-        toggleText.innerHTML = 'Já tem conta? <span class="toggle" id="toggleForm">Entrar</span>';
-      } else {
-        confirmContainer.style.display = 'none';
-        submitBtn.textContent = 'Entrar';
-        toggleText.innerHTML = 'Ainda não tem conta? <span class="toggle" id="toggleForm">Criar conta</span>';
-      }
-      message.textContent = '';
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const password = document.getElementById('password').value;
-      const confirm = document.getElementById('confirmPassword').value;
-
-      if (isRegister && password !== confirm) {
-        message.textContent = '⚠️ As palavras-passe não coincidem!';
-        return;
-      }
-
-      message.textContent = isRegister
-        ? '✨ Conta criada com sucesso!'
-        : '✨ Login efetuado com sucesso!';
-
-      setTimeout(() => {
-        overlay.style.display = 'none';
-        message.textContent = '';
-        form.reset();
-      }, 2000);
-    });
-  </script>
-</body>
+    <!-- Script principal da App React -->
+    <script src="%PUBLIC_URL%/serviceWorker.js"></script>
+  </body>
 </html>
